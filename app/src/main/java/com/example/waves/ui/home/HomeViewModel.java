@@ -1,19 +1,32 @@
 package com.example.waves.ui.home;
 
+import android.graphics.Bitmap;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class HomeViewModel extends ViewModel {
+    // TODO: Implement the ViewModel
 
     private final MutableLiveData<String> mText;
 
+    private final MutableLiveData<Bitmap> mBitmap = new MutableLiveData();
+
     public HomeViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is the home fragment.");
     }
 
     public LiveData<String> getText() {
         return mText;
+    }
+
+    public void setImage(Bitmap capturedImage) {
+        mBitmap.postValue(capturedImage);
+    }
+
+    public LiveData<Bitmap> getBitmap() {
+        return mBitmap;
     }
 }
