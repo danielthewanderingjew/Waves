@@ -28,8 +28,8 @@ import com.example.waves.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment{
 
     private HomeViewModel mViewModel;
-    private Uri imageUri2 = Uri.EMPTY;
-    private ActivityResultLauncher<Uri> mTakePicture = registerForActivityResult(new ActivityResultContracts.TakePicture(), new ActivityResultCallback<Boolean>() {
+    private final Uri imageUri2 = Uri.EMPTY;
+    private final ActivityResultLauncher<Uri> mTakePicture = registerForActivityResult(new ActivityResultContracts.TakePicture(), new ActivityResultCallback<Boolean>() {
                 @Override
                 public void onActivityResult(Boolean result) {
                     if (result) {
