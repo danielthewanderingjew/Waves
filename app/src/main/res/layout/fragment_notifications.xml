@@ -50,7 +50,7 @@
                     android:layout_marginTop="20dp"
                     android:text="ALERT | \nSanta Cruz \n1PM Popping off!!"
                     android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="#FFF"
+                    android:textColor="#FFFF"
                     android:textStyle="italic|normal" />
 
 
