@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
-                    android:text="Santa Cruz \n1PM\nPopping off!!"
+                    android:text="ALERT | \nSanta Cruz \n1PM Popping off!!"
                     android:textAppearance="?android:textAppearanceMedium"
                     android:textColor="#FFF"
                     android:textStyle="italic|normal" />
