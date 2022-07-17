@@ -4,14 +4,23 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SurfSpotsViewModel extends ViewModel {
     // TODO: Implement the ViewModel
 
-    private final MutableLiveData<String> mText;
+    private MutableLiveData<List<SurfLocationInfo>> locationInfo;
+    private final MutableLiveData<String> mText = new MutableLiveData<>();
 
     public SurfSpotsViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is the surf spots fragment.");
+        List<SurfLocationInfo> defaultListOfData = new ArrayList<>();
+        defaultListOfData.add(new SurfLocationInfo("Santa Cruz",5,15,80,5));
+        locationInfo = new MutableLiveData<>(defaultListOfData);
+    }
+
+    public LiveData<List<SurfLocationInfo>> getLocationInfo() {
+        return locationInfo;
     }
 
     public LiveData<String> getText() {

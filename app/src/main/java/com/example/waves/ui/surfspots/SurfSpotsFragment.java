@@ -13,26 +13,29 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.waves.R;
+import com.example.waves.databinding.FragmentDashboardBinding;
+import com.example.waves.databinding.SurfSpotsFragmentBinding;
+import com.example.waves.ui.dashboard.SurfSpotInfo;
+
+import java.util.List;
 
 public class SurfSpotsFragment extends Fragment {
 
     private SurfSpotsViewModel mViewModel;
-
-    public static SurfSpotsFragment newInstance() {
-        return new SurfSpotsFragment();
-    }
+    private SurfSpotsFragmentBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.surf_spots_fragment, container, false);
+        mViewModel = new ViewModelProvider(this).get(SurfSpotsViewModel.class);
+        binding = SurfSpotsFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SurfSpotsViewModel.class);
-        // TODO: Use the ViewModel
+        List<SurfLocationInfo> defaultSurfLocationInfo = mViewModel.getLocationInfo().getValue();
     }
 
 }

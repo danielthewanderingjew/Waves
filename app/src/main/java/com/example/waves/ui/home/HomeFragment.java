@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,10 +21,12 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.waves.R;
 import com.example.waves.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment{
@@ -60,18 +64,21 @@ public class HomeFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+        mViewModel = new ViewModelProvider(this, new HomeViewModelFactory(BitmapFactory.decodeResource(getContext().getResources(), R.drawable.surfboard_silhouette_vector))).get(HomeViewModel.class);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        binding.imageView.setImageDrawable(getResources().getDrawable(mViewModel.getHomeData().getValue().getFirstImage()));
+        binding.imageView2.setImageDrawable(getResources().getDrawable(mViewModel.getHomeData().getValue().getSecondImage()));
+        binding.surferImage1.setImageBitmap(mViewModel.getHomeData().getValue().getThirdImage());
         binding.changePicture.setOnClickListener(view1 -> dispatchTakePictureIntent());
-        mViewModel.getBitmap().observe(getViewLifecycleOwner(), new Observer<Bitmap>() {
+        mViewModel.getHomeData().observe(getViewLifecycleOwner(), new Observer<HomeData>() {
             @Override
-            public void onChanged(Bitmap bitmap) {
-                binding.surferImage1.setImageBitmap(bitmap);
+            public void onChanged(HomeData homeData) {
+                binding.surferImage1.setImageBitmap(homeData.getThirdImage());
             }
         });
     }
@@ -98,7 +105,8 @@ public class HomeFragment extends Fragment{
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            mViewModel.setImage(imageBitmap);
+            mViewModel.getHomeData().getValue().setThirdimage(imageBitmap);
+            mViewModel.setHomeData(mViewModel.getHomeData().getValue());
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
