@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.surfspots.SurfSpotsFragment"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/text_dashboard"
+        android:layout_width="0sp"
+        android:layout_height="0sp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:textAlignment="center"
+        android:textSize="0sp"
+        />
+
+
+    <!-- Surf Reports ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingBottom="10dp">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1"
+            android:paddingBottom="10dp">
+
+            <!-- Surf Report CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/report_one_card_view"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardBackgroundColor="@color/purple_200">
+
+                <TextView
+                    android:id="@+id/report_icons_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/weather_copy"
+                    android:text="a \np\nu\nv"
+                    android:textSize="30sp"
+                    android:textColor="#FFF"
+                    android:layout_marginTop="75dp"/>
+
+                <TextView
+                    android:id="@+id/report_one_place_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Santa Cruz"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="#FFF"
+                    android:textStyle="italic|normal"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/report_one_stats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/linotype1light_copy"
+                    android:paddingBottom="10dp"
+                    android:text="Tide: 5N\nWind: 15MPH\nWater Temperature: 80ºC\n Surf Height: 5 Feet"
+                    android:textSize="30sp"
+                    android:layout_marginTop="70dp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/report_one_recommendation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recommendation: Go surfing!"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="#FFF"
+                    android:textStyle="italic|normal"
+                    android:layout_marginTop="210dp"
+                    android:layout_gravity="center_horizontal"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/report_one_filler_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <!-- Surf Report CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/report_two_card_view"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardBackgroundColor="@color/purple_200">
+
+                <TextView
+                    android:id="@+id/report_icons_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/weather_copy"
+                    android:text="a \np\nu\nv"
+                    android:textSize="30sp"
+                    android:textColor="#FFF"
+                    android:layout_marginTop="75dp"/>
+
+                <TextView
+                    android:id="@+id/report_two_place_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T-Street"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="#FFF"
+                    android:textStyle="italic|normal"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/report_two_stats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/linotype1light_copy"
+                    android:paddingBottom="10dp"
+                    android:text="Tide: -1N\nWind: 1MPH\nWater Temperature: 50ºC\n Surf Height: 3 Feet"
+                    android:textSize="30sp"
+                    android:layout_marginTop="60dp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/report_two_recommendation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recommendation: Surfing conditions are okay, but not great."
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="#FFF"
+                    android:textStyle="italic|normal"
+                    android:layout_marginTop="210dp"
+                    android:layout_gravity="center_horizontal"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/report_two_filler_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <!-- Surf Report CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/report_three_card_view"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardBackgroundColor="@color/purple_200">
+
+                <TextView
+                    android:id="@+id/report_three_place_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salt Creek"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="#FFF"
+                    android:textStyle="italic|normal"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/report_icons_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/weather_copy"
+                    android:text="a \np\nu\nv"
+                    android:textSize="30sp"
+                    android:textColor="#FFF"
+                    android:layout_marginTop="75dp"/>
+
+                <TextView
+                    android:id="@+id/report_three_stats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/linotype1light_copy"
+                    android:paddingBottom="10dp"
+                    android:text="Tide: -1N\nWind: 10MPH\nWater Temperature: 65ºC\n Surf Height: 1 Feet"
+                    android:textSize="30sp"
+                    android:layout_marginTop="60dp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/report_three_recommendation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recommendation: It's not a good day for surfing."
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="#FFF"
+                    android:textStyle="italic|normal"
+                    android:layout_marginTop="210dp"
+                    android:layout_gravity="center_horizontal"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </TableLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
