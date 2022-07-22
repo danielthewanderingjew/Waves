@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="userLevels">
+        <item>Beginner</item>
+        <item>Intermediate</item>
+        <item>Advanced</item>
+    </string-array>
+    <string-array name="userSkills">
+        <item>Paddling</item>
+        <item>Swimming</item>
+        <item>Diving</item>
+        <item>Riding a wave</item>
+    </string-array>
+</resources>

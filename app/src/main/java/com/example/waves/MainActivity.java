@@ -3,28 +3,18 @@ package com.example.waves;
 
 import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< HEAD
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.waves.ui.profile.ProfileFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-=======
-import android.util.Log;
-import android.widget.Button;
-import android.widget.Toast;
-
->>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-<<<<<<< HEAD
-=======
+import androidx.room.Room;
 
->>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
 import com.example.waves.databinding.ActivityMainBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -32,10 +22,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-<<<<<<< HEAD
-=======
 import com.google.android.material.bottomnavigation.BottomNavigationView;
->>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 
@@ -45,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
     private GoogleSignInClient mGoogleSignInClient;
     private ActivityMainBinding binding;
-
+    private AppDatabase appDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "appdatabase").build();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -70,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
-<<<<<<< HEAD
                 .requestIdToken("305543317246-vls60u4pvsb4ia2ih97ilb2p7d3a8ls9.apps.googleusercontent.com")
                 .build();
 
@@ -85,31 +71,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-=======
-                .requestIdToken("205949684294-0dsl457oof6nol871qj1dpjaksk9b001.apps.googleusercontent.com")
-                .build();
 
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        Button signIn = findViewById(R.id.button);
-        signIn.setOnClickListener(view -> {
-            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-            startActivityForResult(signInIntent, RC_SIGN_IN);
-        });
-    }
-
->>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
-<<<<<<< HEAD
-=======
             Log.d("MainActivity", "onActivityResult: " + requestCode);
->>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
@@ -118,29 +87,19 @@ public class MainActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-<<<<<<< HEAD
-
-=======
->>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
             // Signed in successfully, show authenticated UI.
             //Intent i = new Intent(MainActivity.this, ProfileFragment.class);
             ///i.putExtra("user",account);
             ///startActivity(i);
-<<<<<<< HEAD
             Toast.makeText(this,"Welcome " + account.getDisplayName(),Toast.LENGTH_LONG);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-        }
-=======
-            Toast.makeText(this, "Welcome " + account.getDisplayName(), Toast.LENGTH_LONG).show();
-        } catch (ApiException e) {
             // print error message to log
             Log.w("MainActivity", "signInResult:failed code=" + e.getStatus() + " " + e.getMessage()+ " " + e.getStatusCode() );
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
         }
         Log.d("MainActivity", "handleSignInResult: " );
->>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
     }
 }

@@ -206,7 +206,7 @@
                 android:layout_margin="1dp"
                 android:background="#4fc3f7"
                 android:gravity="center"
-                android:text="3-4ft"
+                tools:text="3-4ft"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#FFFFFFFF" />
 
@@ -219,7 +219,7 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/weather_copy"
                 android:gravity="center"
-                android:text="vvv"
+                tools:text="vvv"
                 android:textColor="#FF018786"
                 android:textSize="30sp" />
 
@@ -231,7 +231,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 5ft 10s"
+                tools:text=" 5ft 10s"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -242,7 +242,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 0mph" />
+                tools:text=" 0mph" />
         </TableRow>
 
         <TableRow
@@ -260,7 +260,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="6am" />
+                tools:text="6am" />
 
             <TextView
                 android:id="@+id/ThirdRowSurfDepth"
@@ -270,7 +270,7 @@
                 android:layout_margin="1dp"
                 android:background="#4fc3f7"
                 android:gravity="center"
-                android:text="3-4ft"
+                tools:text="3-4ft"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#FFFFFFFF" />
 
@@ -283,7 +283,7 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/weather_copy"
                 android:gravity="center"
-                android:text="vvv\nv"
+                tools:text="vvv\nv"
                 android:textColor="#FF018786"
                 android:textSize="30sp" />
 
@@ -295,7 +295,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 5ft 10s"
+                tools:text=" 5ft 10s"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -306,7 +306,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 6mph\n Offshore" />
+                tools:text=" 6mph\n Offshore" />
         </TableRow>
 
         <TableRow
@@ -324,7 +324,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="9am" />
+                tools:text="9am" />
 
             <TextView
                 android:id="@+id/FourthRowSurfDepth"
@@ -334,7 +334,7 @@
                 android:layout_margin="1dp"
                 android:background="#4fc3f7"
                 android:gravity="center"
-                android:text="3-4ft"
+                tools:text="3-4ft"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#FFFFFFFF" />
 
@@ -347,7 +347,7 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/weather_copy"
                 android:gravity="center"
-                android:text="vvv\nv"
+                tools:text="vvv\nv"
                 android:textColor="#FF018786"
                 android:textSize="30sp" />
 
@@ -359,7 +359,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 4ft 10s"
+                tools:text=" 4ft 10s"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -370,7 +370,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 6mph\n Offshore" />
+                tools:text=" 6mph\n Offshore" />
         </TableRow>
 
         <TableRow
@@ -388,7 +388,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="Noon" />
+                tools:text="Noon" />
 
             <TextView
                 android:id="@+id/FifthRowSurfDepth"
@@ -398,7 +398,7 @@
                 android:layout_margin="1dp"
                 android:background="#4fc3f7"
                 android:gravity="center"
-                android:text="3ft"
+                tools:text="3ft"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#FFFFFFFF" />
 
@@ -411,7 +411,7 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/weather_copy"
                 android:gravity="center"
-                android:text="vvv"
+                tools:text="vvv"
                 android:textColor="#FF018786"
                 android:textSize="30sp" />
 
@@ -423,7 +423,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 3ft 9s"
+                tools:text=" 3ft 9s"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -434,7 +434,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 8mph\n Offshore" />
+                tools:text=" 8mph\n Offshore" />
         </TableRow>
 
         <TableRow
@@ -452,7 +452,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="3pm" />
+                tools:text="3pm" />
 
             <TextView
                 android:id="@+id/SixthRowSurfDepth"
@@ -462,7 +462,7 @@
                 android:layout_margin="1dp"
                 android:background="#4fc3f7"
                 android:gravity="center"
-                android:text="2-3ft"
+                tools:text="2-3ft"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#FFFFFFFF" />
 
@@ -475,7 +475,7 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/weather_copy"
                 android:gravity="center"
-                android:text="vv"
+                tools:text="vv"
                 android:textColor="#FF018786"
                 android:textSize="30sp" />
 
@@ -487,7 +487,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 3ft 9s"
+                tools:text=" 3ft 9s"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -498,7 +498,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 6mph\n Cross" />
+                tools:text=" 6mph\n Cross" />
         </TableRow>
 
         <TableRow
@@ -516,7 +516,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="6pm" />
+                tools:text="6pm" />
 
             <TextView
                 android:id="@+id/SeventhRowSurfDepth"
@@ -526,7 +526,7 @@
                 android:layout_margin="1dp"
                 android:background="#4fc3f7"
                 android:gravity="center"
-                android:text="2-3ft"
+                tools:text="2-3ft"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#FFFFFFFF" />
 
@@ -539,7 +539,7 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/weather_copy"
                 android:gravity="center"
-                android:text=""
+                tools:text=""
                 android:textSize="30sp" />
 
             <TextView
@@ -550,7 +550,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 2.5ft 9s"
+                tools:text=" 2.5ft 9s"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -561,7 +561,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 12mph\n Onshore" />
+                tools:text=" 12mph\n Onshore" />
         </TableRow>
 
         <TableRow
@@ -579,7 +579,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="9pm" />
+                tools:text="9pm" />
 
             <TextView
                 android:id="@+id/EighthRowSurfDepth"
@@ -589,7 +589,7 @@
                 android:layout_margin="1dp"
                 android:background="#4fc3f7"
                 android:gravity="center"
-                android:text="2-3ft"
+                tools:text="2-3ft"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#FFFFFFFF" />
 
@@ -602,7 +602,7 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/weather_copy"
                 android:gravity="center"
-                android:text=""
+                tools:text=""
                 android:textSize="30sp" />
 
             <TextView
@@ -613,7 +613,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 2.5ft 9s"
+                tools:text=" 2.5ft 9s"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -624,7 +624,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" 10mph\n Onshore" />
+                tools:text=" 10mph\n Onshore" />
         </TableRow>
 
     </TableLayout>
