@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.waves.databinding.ProfileFragmentBinding;
-import com.example.waves.ui.profile.Data.UserProfile;
 
 public class ProfileFragment extends Fragment {
 
@@ -31,7 +30,16 @@ public class ProfileFragment extends Fragment {
         binding.saveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                profileViewModel.getUserProfileDAO().insert(new UserProfile());
+                String username = binding.surferUsername.getText().toString();
+                String email = binding.surferEmail.getText().toString();
+                int surferLevel = binding.surferLevel.getSelectedItemPosition();
+                int selectedSkill = binding.skills.getSelectedItemPosition();
+                if (username != null && email != null && !username.isEmpty()) {
+                    profileViewModel.handleNewUser(username, email, surferLevel, selectedSkill);
+                } else {
+                    //handle if user tried to save without providing username
+                }
+
             }
         });
         return binding.getRoot();

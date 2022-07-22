@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "appdatabase").build();
+        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "appdatabase").allowMainThreadQueries().build();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

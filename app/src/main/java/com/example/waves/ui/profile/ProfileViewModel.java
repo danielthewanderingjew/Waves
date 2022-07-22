@@ -29,4 +29,8 @@ public class ProfileViewModel extends AndroidViewModel {
     public LiveData<UserProfile> getUserProfile() {
         return userProfile;
     }
+
+    public void handleNewUser(String username, String email, int level, int skill) {
+        getUserProfileDAO().insert(new UserProfile());
+    }
 }
