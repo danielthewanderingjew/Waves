@@ -15,7 +15,9 @@ public class SurfSpotsViewModel extends ViewModel {
 
     public SurfSpotsViewModel() {
         List<SurfLocationInfo> defaultListOfData = new ArrayList<>();
-        defaultListOfData.add(new SurfLocationInfo("Santa Cruz",5,15,80,5));
+        defaultListOfData.add(new SurfLocationInfo("Santa Cruz", 5, 15, 25, 5));
+        defaultListOfData.add(new SurfLocationInfo("T-Street", -1, 1, 30, 3));
+        defaultListOfData.add(new SurfLocationInfo("Salt Creek", -1, 10, 35, 1));
         locationInfo = new MutableLiveData<>(defaultListOfData);
     }
 

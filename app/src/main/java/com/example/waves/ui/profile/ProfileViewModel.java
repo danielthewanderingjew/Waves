@@ -1,32 +1,32 @@
 package com.example.waves.ui.profile;
 
-import android.graphics.Bitmap;
+import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+import androidx.room.Room;
 
-public class ProfileViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+import com.example.waves.AppDatabase;
+import com.example.waves.ui.profile.Data.UserProfile;
+import com.example.waves.ui.profile.Data.UserProfileDao;
 
-    private final MutableLiveData<String> mText;
+public class ProfileViewModel extends AndroidViewModel {
+    AppDatabase mainDatabase;
+    private final MutableLiveData<UserProfile> userProfile;
 
-    private final MutableLiveData<Bitmap> mBitmap = new MutableLiveData();
-
-    public ProfileViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is the profile fragment.");
+    public ProfileViewModel(@NonNull Application application) {
+        super(application);
+        mainDatabase = Room.inMemoryDatabaseBuilder(application.getApplicationContext(), AppDatabase.class).build();
+        userProfile = new MutableLiveData<>();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public UserProfileDao getUserProfileDAO() {
+        return mainDatabase.userProfileDao();
     }
 
-    public void setImage(Bitmap capturedImage) {
-        mBitmap.postValue(capturedImage);
-    }
-
-    public LiveData<Bitmap> getBitmap() {
-        return mBitmap;
+    public LiveData<UserProfile> getUserProfile() {
+        return userProfile;
     }
 }

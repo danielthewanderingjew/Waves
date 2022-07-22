@@ -3,28 +3,17 @@ package com.example.waves;
 
 import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.waves.ui.profile.ProfileFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-=======
-import android.util.Log;
-import android.widget.Button;
-import android.widget.Toast;
-
->>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-<<<<<<< HEAD
-=======
+import androidx.room.Room;
 
->>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
 import com.example.waves.databinding.ActivityMainBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -32,10 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-<<<<<<< HEAD
-=======
 import com.google.android.material.bottomnavigation.BottomNavigationView;
->>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 
@@ -45,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
     private GoogleSignInClient mGoogleSignInClient;
     private ActivityMainBinding binding;
-
+    private AppDatabase appDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "appdatabase").build();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
