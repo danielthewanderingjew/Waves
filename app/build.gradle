@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.application'
+<<<<<<< HEAD
     //id 'com.google.gms.google-services'
+=======
+    id 'com.google.gms.google-services'
+>>>>>>> 26f6ae1ada8094143716752e71bd4ed5eabb8466
     id 'com.google.firebase.crashlytics'
 }
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "205949684294",
+    "project_id": "wavesfinal",
+    "storage_bucket": "wavesfinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205949684294:android:61e4e381fd8ee3e24e5847",
+        "android_client_info": {
+          "package_name": "com.example.waves"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205949684294-0dsl457oof6nol871qj1dpjaksk9b001.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUosp0_LZTpNb6nBxsZ2RQvjodxfuobdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205949684294-0dsl457oof6nol871qj1dpjaksk9b001.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
