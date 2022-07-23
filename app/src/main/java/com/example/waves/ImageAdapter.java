@@ -56,7 +56,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
                                     document.get("URL").toString()
                             );
                             images.add(i);
-                        } catch (Exception e) {
+                        }catch (Exception e) {
                         }
                     }
                     notifyDataSetChanged();
@@ -67,8 +67,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 images = new ArrayList<>();
-                for (DocumentSnapshot document : value.getDocuments())
-                {
+                for (DocumentSnapshot document : value.getDocuments()) {
                     try {
                         Image i = new Image(
                                 document.getId(),
