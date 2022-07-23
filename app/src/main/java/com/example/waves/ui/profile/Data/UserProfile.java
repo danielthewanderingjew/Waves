@@ -48,4 +48,7 @@ public class UserProfile {
     public void setSurfingLevel(int surfingLevel) {
         this.surfingLevel = surfingLevel;
     }
+
+    public void insert(UserProfile userProfile) {
+    }
 }

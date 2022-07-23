@@ -16,10 +16,6 @@ public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<HomeData> homeData = new MutableLiveData<>();
 
-    public HomeViewModel(Bitmap image3) {
-        homeData = new MutableLiveData<>(new HomeData(R.drawable.hilton_beach_tel_avivi,R.drawable._c27e934b67ba51f8981e63c11159584__tel_aviv_surfing, image3));
-    }
-
     public LiveData<HomeData> getHomeData() {
         return homeData;
     }

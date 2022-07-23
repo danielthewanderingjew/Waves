@@ -8,6 +8,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.room.Room;
 
+import com.example.waves.AppDatabase;
+import com.example.waves.ui.profile.Data.UserProfile;
+
 public class ProfileViewModel extends AndroidViewModel {
     AppDatabase mainDatabase;
     private final MutableLiveData<UserProfile> userProfile;
@@ -18,8 +21,8 @@ public class ProfileViewModel extends AndroidViewModel {
         userProfile = new MutableLiveData<>();
     }
 
-    public UserProfileDao getUserProfileDAO() {
-        return mainDatabase.userProfileDao();
+    public com.example.waves.ui.profile.Data.UserProfile getUserProfileDAO() {
+        return (UserProfile) mainDatabase.userProfileDao();
     }
 
     public LiveData<UserProfile> getUserProfile() {
