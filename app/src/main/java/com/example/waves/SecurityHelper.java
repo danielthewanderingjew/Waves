@@ -8,7 +8,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class SecurityHelper {
 
-    private static String secret = "1234567890123456";
+    private static String secret = BuildConfig.SharedKey;
     private static SecretKey key =  new SecretKeySpec(secret.getBytes(), "AES");
 
     public static String Encrypt(String plain) {

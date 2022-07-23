@@ -50,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 777;
     private FirebaseAnalytics mFirebaseAnalytics;
-    private GoogleSignInClient mGoogleSignInClient;
+    GoogleSignInClient mGoogleSignInClient;
+    GoogleSignInAccount account;
     private ActivityMainBinding binding;
     private AppDatabase appDatabase;
     private ImageAdapter adapter;
@@ -79,19 +80,13 @@ public class MainActivity extends AppCompatActivity {
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
-                .requestIdToken("205949684294-0dsl457oof6nol871qj1dpjaksk9b001.apps.googleusercontent.com")
+                .requestIdToken(BuildConfig.IDToken)
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        Button signIn = findViewById(R.id.button);
-        signIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, RC_SIGN_IN);
-            }
-        });
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
 
         RecyclerView rv = findViewById(R.id.images);
         adapter = new ImageAdapter();
@@ -108,41 +103,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            Log.d("MainActivity", "onActivityResult: " + requestCode);
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            addPic(currentPhotoPath);
-        }
-    }
-
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
-        try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            // Signed in successfully, show authenticated UI.
-            //Intent i = new Intent(MainActivity.this, ProfileFragment.class);
-            ///i.putExtra("user",account);
-            ///startActivity(i);
-            Toast.makeText(this,"Welcome " + account.getDisplayName(),Toast.LENGTH_LONG);
-        } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            // print error message to log
-            Log.w("MainActivity", "signInResult:failed code=" + e.getStatus() + " " + e.getMessage()+ " " + e.getStatusCode() );
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-        }
-        Log.d("MainActivity", "handleSignInResult: " );
     }
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -187,6 +147,33 @@ public class MainActivity extends AppCompatActivity {
 
     private void addPic(String path) {
         adapter.addPicture(path);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            addPic(currentPhotoPath);
+        }
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
+
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            account = completedTask.getResult(ApiException.class);
+            adapter.setAccount(account);
+            Toast.makeText(this,"Welcome " + account.getDisplayName(),Toast.LENGTH_LONG).show();
+
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+        }
     }
 
 }
