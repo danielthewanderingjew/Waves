@@ -4,6 +4,7 @@ package com.example.waves;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.room.Room;
 
 import com.example.waves.databinding.ActivityMainBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -30,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
     private GoogleSignInClient mGoogleSignInClient;
     private ActivityMainBinding binding;
-
+    private AppDatabase appDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "appdatabase").allowMainThreadQueries().build();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -58,13 +60,15 @@ public class MainActivity extends AppCompatActivity {
                 .requestIdToken("205949684294-0dsl457oof6nol871qj1dpjaksk9b001.apps.googleusercontent.com")
                 .build();
 
-
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         Button signIn = findViewById(R.id.button);
-        signIn.setOnClickListener(view -> {
-            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-            startActivityForResult(signInIntent, RC_SIGN_IN);
+        signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent, RC_SIGN_IN);
+            }
         });
     }
 
@@ -89,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
             ///startActivity(i);
             Toast.makeText(this, "Welcome " + account.getDisplayName(), Toast.LENGTH_LONG).show();
         } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
             // print error message to log
             Log.w("MainActivity", "signInResult:failed code=" + e.getStatus() + " " + e.getMessage()+ " " + e.getStatusCode() );
             // The ApiException status code indicates the detailed failure reason.

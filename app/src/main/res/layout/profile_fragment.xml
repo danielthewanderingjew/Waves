@@ -6,21 +6,47 @@
     tools:context=".ui.profile.ProfileFragment"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/surflevel"
-        android:layout_width="match_parent"
-        android:layout_height="502dp"
-        android:src="@drawable/surf_simply_tree_of_knowledge" />
-
 
     <EditText
-        android:id="@+id/surfer_level"
+        android:id="@+id/surfer_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:hint="User Level"
-        android:inputType="number" />
+        android:hint="Your username" />
+
+    <EditText
+        android:id="@+id/surfer_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:hint="Your email"
+        android:inputType="textEmailAddress" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/surfer_level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:entries="@array/userLevels"
+        android:spinnerMode="dropdown" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/skills"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:entries="@array/userSkills"
+        android:spinnerMode="dropdown" />
+
+    <Button
+        android:id="@+id/saveProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Save Profile" />
 
 </LinearLayout>
