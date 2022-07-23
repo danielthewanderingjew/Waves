@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
-                .requestIdToken("205949684294-0dsl457oof6nol871qj1dpjaksk9b001.apps.googleusercontent.com")
+                .requestIdToken("305543317246-vls60u4pvsb4ia2ih97ilb2p7d3a8ls9.apps.googleusercontent.com")
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             //Intent i = new Intent(MainActivity.this, ProfileFragment.class);
             ///i.putExtra("user",account);
             ///startActivity(i);
-            Toast.makeText(this, "Welcome " + account.getDisplayName(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Welcome " + account.getDisplayName(),Toast.LENGTH_LONG);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
