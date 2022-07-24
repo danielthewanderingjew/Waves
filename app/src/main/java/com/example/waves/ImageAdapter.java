@@ -71,7 +71,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
                     try {
                         Image i = new Image(
                                 document.getId(),
-                                SecurityHelper.Decrypt(document.get("URL").toString())
+                                document.get("URL").toString()
                         );
                         images.add(i);
                     } catch (Exception e) {
