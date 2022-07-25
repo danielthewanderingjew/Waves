@@ -24,7 +24,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -34,13 +33,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//image adapter is being used for the recycler view within homeFragment, should be in ui->home
 public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
-
     private List<Image> images;
     private GoogleSignInAccount account;
 
-    public ImageAdapter()
-    {
+    public ImageAdapter() {
         images = new ArrayList<Image>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Images").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -48,8 +46,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     images = new ArrayList<>();
-                    for (QueryDocumentSnapshot document : task.getResult())
-                    {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
                         try {
                             Image i = new Image(
                                     document.getId(),
@@ -135,6 +132,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
             }
         });
     }
+
     public void setAccount(GoogleSignInAccount account) {
         this.account = account;
     }

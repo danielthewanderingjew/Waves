@@ -1,24 +1,6 @@
 package com.example.waves;
 
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
-import androidx.core.content.FileProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -26,13 +8,17 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.analytics.FirebaseAnalytics;
+import android.widget.Toast;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.example.waves.databinding.ActivityMainBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -45,12 +31,21 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 777;
     private FirebaseAnalytics mFirebaseAnalytics;
     GoogleSignInClient mGoogleSignInClient;
+    //This google sign in account object is being held in MainActivity
+    // And the Image Adapter, we do not have access to this object
+    // anywhere else within our app, ie our profilefragment where we need to
+    // pull information from the object to load the data the user sees.
     GoogleSignInAccount account;
     private ActivityMainBinding binding;
     private AppDatabase appDatabase;
@@ -88,13 +83,17 @@ public class MainActivity extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
 
+        //recyclerview belongs to HomeFragment, all recyclerview objects &
+        // it's associated adapters/methods should be handled within the fragment onCreate
         RecyclerView rv = findViewById(R.id.images);
         adapter = new ImageAdapter();
         rv.setHasFixedSize(false);
-        RecyclerView.LayoutManager manager = new GridLayoutManager(getApplicationContext(),4);
+        RecyclerView.LayoutManager manager = new GridLayoutManager(getApplicationContext(), 4);
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
 
+        //FAB is also within HomeFragment, it's object & click listeners should be handled
+        // within home fragment
         FloatingActionButton addImage = findViewById(R.id.floatingActionButton);
         addImage.setOnClickListener(new View.OnClickListener() {
             @Override

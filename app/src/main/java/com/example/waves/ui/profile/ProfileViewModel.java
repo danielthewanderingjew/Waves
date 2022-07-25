@@ -10,19 +10,22 @@ import androidx.room.Room;
 
 import com.example.waves.AppDatabase;
 import com.example.waves.ui.profile.Data.UserProfile;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileViewModel extends AndroidViewModel {
     AppDatabase mainDatabase;
+    FirebaseAuth firebaseAuth;
+    GoogleSignInAccount account;
     private final MutableLiveData<UserProfile> userProfile;
 
     public ProfileViewModel(@NonNull Application application) {
         super(application);
-        mainDatabase = Room.inMemoryDatabaseBuilder(application.getApplicationContext(), AppDatabase.class).build();
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        mainDatabase = Room.inMemoryDatabaseBuilder(application.getApplicationContext(), AppDatabase.class).allowMainThreadQueries().build();
         userProfile = new MutableLiveData<>();
-    }
-
-    public com.example.waves.ui.profile.Data.UserProfile getUserProfileDAO() {
-        return (UserProfile) mainDatabase.userProfileDao();
     }
 
     public LiveData<UserProfile> getUserProfile() {
@@ -30,6 +33,6 @@ public class ProfileViewModel extends AndroidViewModel {
     }
 
     public void handleNewUser(String username, String email, int level, int skill) {
-        getUserProfileDAO().insert(new UserProfile());
+        mainDatabase.userProfileDao().insert(new UserProfile());
     }
 }
