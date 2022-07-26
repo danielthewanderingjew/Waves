@@ -76,12 +76,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
                                     document.get("URL").toString()
                             );
                             images.add(i);
-                           // notifyItemChanged(images.size() - 1);
+                           notifyItemChanged(images.size() - 1);
                         } catch (Exception e) {
                         }
                     }
                 }
-                notifyDataSetChanged();
             }
         });
     }
@@ -99,8 +98,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Image image = images.get(position);
         Glide.with(holder.image).load(SecurityHelper.Decrypt(image.URL)).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(holder.image);
-       //Should be GlideApp *^ maybe!
-        //Log.d("ImageAdapter", "onBindViewHolder: " + SecurityHelper.Decrypt(image.URL));
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
