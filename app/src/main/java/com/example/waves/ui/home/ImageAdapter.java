@@ -3,6 +3,7 @@ package com.example.waves.ui.home;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.example.waves.GlideApp;
 import com.example.waves.R;
 import com.example.waves.SecurityHelper;
@@ -66,14 +68,17 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 images = new ArrayList<>();
-                for (DocumentSnapshot document : value.getDocuments()) {
-                    try {
-                        Image i = new Image(
-                                document.getId(),
-                                document.get("URL").toString()
-                        );
-                        images.add(i);
-                    } catch (Exception e) {
+                if (value != null) {
+                    for (DocumentSnapshot document : value.getDocuments()) {
+                        try {
+                            Image i = new Image(
+                                    document.getId(),
+                                    document.get("URL").toString()
+                            );
+                            images.add(i);
+                           // notifyItemChanged(images.size() - 1);
+                        } catch (Exception e) {
+                        }
                     }
                 }
                 notifyDataSetChanged();
@@ -93,7 +98,9 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Image image = images.get(position);
-        GlideApp.with(holder.image).load(image).into(holder.image);
+        Glide.with(holder.image).load(SecurityHelper.Decrypt(image.URL)).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(holder.image);
+       //Should be GlideApp *^ maybe!
+        //Log.d("ImageAdapter", "onBindViewHolder: " + SecurityHelper.Decrypt(image.URL));
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

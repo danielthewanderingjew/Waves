@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private AppDatabase appDatabase;
     private ImageAdapter adapter;
+    RecyclerView rv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +88,12 @@ public class MainActivity extends AppCompatActivity {
 
         //recyclerview belongs to HomeFragment, all recyclerview objects &
         // it's associated adapters/methods should be handled within the fragment onCreate
+        rv = findViewById(R.id.images);
+
         RecyclerView rv = findViewById(R.id.images);
         adapter = new ImageAdapter();
         rv.setHasFixedSize(false);
-        RecyclerView.LayoutManager manager = new GridLayoutManager(getApplicationContext(), 4);
+        RecyclerView.LayoutManager manager = new GridLayoutManager(getApplicationContext(),4);
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
 
@@ -104,6 +108,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("MainActivity", "onResume");
+    }
+
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private void dispatchTakePictureIntent() {
