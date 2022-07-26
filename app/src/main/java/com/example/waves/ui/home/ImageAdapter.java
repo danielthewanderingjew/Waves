@@ -13,6 +13,7 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.waves.GlideApp;
 import com.example.waves.R;
 import com.example.waves.SecurityHelper;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -40,7 +41,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     private GoogleSignInAccount account;
 
     public ImageAdapter() {
-        images = new ArrayList<Image>();
+        images = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Images").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -128,6 +129,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         db.collection("Images").document(String.valueOf(System.currentTimeMillis()))
                                 .set(image);
+                        notifyDataSetChanged();
                     }
                 });
             }
