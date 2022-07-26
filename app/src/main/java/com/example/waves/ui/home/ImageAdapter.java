@@ -1,4 +1,4 @@
-package com.example.waves;
+package com.example.waves.ui.home;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +13,8 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.waves.R;
+import com.example.waves.SecurityHelper;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,7 +35,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//image adapter is being used for the recycler view within homeFragment, should be in ui->home
 public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     private List<Image> images;
     private GoogleSignInAccount account;
@@ -82,20 +83,20 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
 
     @NonNull
     @Override
-    public com.example.waves.ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.image_item, parent, false);
-        return new com.example.waves.ImageViewHolder(view);
+        return new ImageViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull com.example.waves.ImageViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Image image = images.get(position);
-        Glide.with(holder.image).load(image).into(holder.image);
+        GlideApp.with(holder.image).load(image).into(holder.image);
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(),FullImageActivity.class);
+                Intent i = new Intent(view.getContext(), FullImageActivity.class);
                 i.putExtra("image",image);
                 i.putExtra("user",account);
                 ActivityOptionsCompat options =

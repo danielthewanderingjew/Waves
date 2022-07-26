@@ -28,7 +28,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <activity
-            android:name="com.example.waves.FullImageActivity"
+            android:name="com.example.waves.ui.home.FullImageActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

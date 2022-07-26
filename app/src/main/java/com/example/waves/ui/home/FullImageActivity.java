@@ -1,13 +1,12 @@
-package com.example.waves;
+package com.example.waves.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.waves.R;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 public class FullImageActivity extends AppCompatActivity {

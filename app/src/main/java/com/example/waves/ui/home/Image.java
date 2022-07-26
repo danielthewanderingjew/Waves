@@ -1,8 +1,8 @@
-package com.example.waves;
+package com.example.waves.ui.home;
 
 import java.io.Serializable;
 
-//Image is a dataclass for each image inside ImageAdapter, should be in ui->Home->data
+
 public class Image implements Serializable {
     public String Id;
     public String URL;
