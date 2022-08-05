@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
-import com.example.waves.GlideApp;
 import com.example.waves.R;
 import com.example.waves.SecurityHelper;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

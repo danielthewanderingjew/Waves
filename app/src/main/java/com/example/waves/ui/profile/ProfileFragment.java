@@ -14,11 +14,6 @@ import com.example.waves.databinding.ProfileFragmentBinding;
 
 public class ProfileFragment extends Fragment {
 
-
-    public static ProfileFragment newInstance() {
-        return new ProfileFragment();
-    }
-
     private ProfileViewModel profileViewModel;
     private ProfileFragmentBinding binding;
 
